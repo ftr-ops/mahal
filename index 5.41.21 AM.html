@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Valentine Proposal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+    <main class="card" aria-live="polite">
+      <img class="icon" src="assets/icon.webp" alt="Your custom icon" />
+      <h1>Mahal, will you be my valentine?</h1>
+      <p class="sub"></p>
+      <div class="buttons">
+        <button id="yesBtn" class="btn yes">Yes</button>
+        <button id="noBtn" class="btn no" aria-label="No">No</button>
+      </div>
+      <p class="hint" id="hint"></p>
+    </main>
+
+    <div id="success" class="success" aria-hidden="true">
+      <div class="success-card">
+        <h2>Yay! You said yes!</h2>
+        <p>See you on our sweetest date yet. I love you baby.</p>
+        <button id="closeBtn" class="btn yes">Close</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

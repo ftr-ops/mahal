@@ -177,3 +177,42 @@ h1 {
     flex-direction: column;
   }
 }
+
+
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.confetti {
+  position: absolute;
+  top: -5vh;
+  font-size: 20px;
+  animation: confettiFall var(--fall, 2.6s) linear forwards,
+    confettiSway var(--sway, 1.2s) ease-in-out infinite;
+  opacity: 0.9;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(var(--drift, 40px), 110vh, 0) rotate(360deg);
+  }
+}
+
+@keyframes confettiSway {
+  0% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: 12px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
