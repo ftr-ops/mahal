@@ -1,0 +1,179 @@
+:root {
+  --pink: #ff7aa2;
+  --rose: #ff4d7e;
+  --blush: #ffd1dc;
+  --eggshell: #f7f3e8;
+  --berry: #7a0f2b;
+  --shadow: rgba(20, 10, 10, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #33101b;
+  overflow: hidden;
+  background: #ffe6ee;
+}
+
+.bg {
+  position: fixed;
+  inset: -20vmax;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.7), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(255, 122, 162, 0.35), transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(255, 77, 126, 0.35), transparent 55%),
+    linear-gradient(120deg, #ffd1dc, #ffb4c6, #ffe6ee);
+  filter: blur(10px);
+  animation: floatBg 12s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+.bg::before,
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 12px, transparent 14px),
+    radial-gradient(circle, rgba(255, 77, 126, 0.8) 0 8px, transparent 10px),
+    radial-gradient(circle, rgba(255, 122, 162, 0.7) 0 6px, transparent 8px);
+  background-size: 140px 140px, 180px 180px, 220px 220px;
+  background-position: 0 0, 60px 80px, 30px 130px;
+  opacity: 0.35;
+  animation: drift 18s linear infinite;
+}
+
+.bg::after {
+  animation-direction: reverse;
+  opacity: 0.25;
+}
+
+.card {
+  width: min(560px, 90vw);
+  padding: 40px 32px 32px;
+  background: var(--eggshell);
+  border-radius: 28px;
+  box-shadow: 0 22px 60px var(--shadow);
+  text-align: center;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 22px;
+  border: 2px dashed rgba(122, 15, 43, 0.12);
+  pointer-events: none;
+}
+
+.icon {
+  width: 92px;
+  height: 92px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin: 8px 0 10px;
+}
+
+.sub {
+  margin: 0 0 18px;
+  color: #6b2a3a;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 18px 0 10px;
+  position: relative;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn.yes {
+  background: linear-gradient(120deg, var(--rose), var(--pink));
+  color: white;
+  box-shadow: 0 10px 20px rgba(255, 77, 126, 0.3);
+}
+
+.btn.no {
+  background: #fff2f6;
+  color: #7a0f2b;
+  border: 1px solid rgba(122, 15, 43, 0.15);
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.hint {
+  font-size: 0.95rem;
+  color: #7a0f2b;
+  margin: 0;
+}
+
+.success {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 230, 238, 0.7);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.success.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.success-card {
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+@keyframes floatBg {
+  0% {
+    transform: translate(-3%, -2%) scale(1);
+  }
+  100% {
+    transform: translate(3%, 2%) scale(1.05);
+  }
+}
+
+@keyframes drift {
+  0% {
+    background-position: 0 0, 60px 80px, 30px 130px;
+  }
+  100% {
+    background-position: 140px 120px, 200px 30px, 120px 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .buttons {
+    flex-direction: column;
+  }
+}
